@@ -57,7 +57,7 @@ VALUES
 -- As we mentioned earlier, we have inserted 30 seats for the flight 'F002'
 
 INSERT INTO Seats (FlightID, IsReserved)
-SELECT TOP 30 'F002', CAST(0 AS BIT) --ensures that only the top 30 rows are selected.
+SELECT TOP 30 'F002', 0 --ensures that only the top 30 rows are selected.
 FROM sys.syscolumns -- generate multiple rows without explicitly specifying the column values.
 
 -- Table 6

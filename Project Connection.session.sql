@@ -67,7 +67,7 @@ CREATE TABLE Seats
 (
     SeatNumber INT IDENTITY(1,1),
     FlightID VARCHAR(10),
-    IsReserved BOOLEAN,
+    IsReserved INT,
 
     PRIMARY KEY (SeatNumber, FlightID), --composite primary key
     FOREIGN KEY (FlightID) REFERENCES Flight(FlightID)
@@ -96,6 +96,7 @@ CREATE TABLE Bookings
 (
     BookingID VARCHAR(10),
     FlightID VARCHAR(10),
+    SeatNumber INT,
     PassengerID INT,
     BookingDate DATE,
 
@@ -111,7 +112,6 @@ CREATE TABLE Ticket
 (
     TicketID VARCHAR(10),
     BookingID VARCHAR(10),
-    SeatNumber INT,
     TicketPrice FLOAT,
 
     PRIMARY Key(TicketID),

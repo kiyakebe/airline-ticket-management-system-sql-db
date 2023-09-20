@@ -31,7 +31,7 @@ FROM Passengers;
 
 -- Table 7
 
-SELECT BookingID, FlightID, PassengerID, BookingDate
+SELECT BookingID, FlightID, SeatNumber, PassengerID, BookingDate
 FROM Bookings;
 
 -- Table 8

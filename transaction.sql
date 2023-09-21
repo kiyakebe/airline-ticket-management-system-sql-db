@@ -16,46 +16,48 @@ BEGIN
     BEGIN TRAN
     BEGIN TRY
             -- UPDATE RESERVED TO TRUE
-            SELECT @IsReserved = IsReserved FROM Seat WHERE SeatNumber = @SeatNumber AND FlightID = @FlightID;
+        SELECT @IsReserved = IsReserved FROM Seats WHERE SeatNumber = @SeatNumber AND FlightID = @FlightID;
 
-            IF @IsReserved = 0
-            BEGIN
-        UPDATE Seats
+        IF @IsReserved = 0
+        BEGIN
+            UPDATE Seats
                 SET IsReserved = 1
                 WHERE SeatNumber = @SeatNumber AND FlightID = @FlightID;
 
-        --add to booking
-        INSERT INTO Bookings
-            (BookingID, FlightID, PassengerID, BookingDate)
-        VALUES
-            (@BookingID, @FlightID, @PassengerID, FORMAT(GETDATE(), 'yyyy-MM-dd'));
+            --add to booking
+            INSERT INTO Bookings
+                (BookingID, FlightID, PassengerID, BookingDate, SeatNumber)
+            VALUES
+                (@BookingID, @FlightID, @PassengerID, FORMAT(GETDATE(), 'yyyy-MM-dd'), @SeatNumber);
 
-        COMMIT TRANSACTION;
-        PRINT 'Booking successfull! Please finish your booking by completing your payment.';
-    END
-            ELSE
-            BEGIN
-        PRINT 'The selected seat is not avoilable or Not valid!'
-    END
-        END TRY
+            PRINT 'Booking successfull! Please finish your booking by completing your payment.';
+        END
+        ELSE
+        BEGIN
+            PRINT 'The selected seat is not avoilable or Not valid!'
+        END
+    END TRY
+    BEGIN CATCH
 
-        BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        PRINT 'Transaction rolled back due to an error: ' + ERROR_MESSAGE();
 
-            ROLLBACK TRANSACTION;
-            PRINT 'Transaction rolled back due to an error: ' + ERROR_MESSAGE();
-
-        END CATCH
+    END CATCH
     COMMIT TRAN
 END;
 
+
+DROP PROCEDURE dbo.BookingTransaction;
 -- As we mentioned earlier, we have inserted 30 seats for the flight 'F002'
 -- So for demonstration we have to only use 'F002'
 
 EXECUTE BookingTransaction
-    @SeatNumber = 13,
+    @SeatNumber = 19,
     @FlightID = 'F002',
-    @BookingID = 'B0001',
-    @PassengerID = 12;
+    @BookingID = 'B0004',
+    @PassengerID = 12,
+	@IsReserved = 0;
+
 -- only from ( 1 - 28 ) - the reason is mentioned above
 
 -- we are going to use flight Id from (1 - 28) since we only have 28 passengers
@@ -85,7 +87,7 @@ BEGIN
             (TicketID, BookingID, PaymentCompleted)
         VALUES
             (@TicketID, @BookingID, @PaymentCompleted)
-        PRINT 'Ticketing successfull! Your ticket Id is' + @TicketID;
+        PRINT 'Ticketing successfull! Your ticket Id is: ' + @TicketID;
     END
         ELSE
         BEGIN

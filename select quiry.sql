@@ -6,12 +6,12 @@ FROM Airline;
 
 -- Table 2
 
-SELECT AirPortID, AirportName, AirlineID
+SELECT AirPortID, AirpotName, AirlineID, PortLocation
 FROM AirPorts;
 
 -- Table 3
 
-SELECT PlaneId, OwnerAirline, Capacity, PortLocation
+SELECT PlaneId, OwnerAirline, Capacity
 FROM Planes;
 
 -- Table 4 flight
@@ -29,12 +29,16 @@ FROM Seats;
 SELECT PassengerID, FullName, Email, Gender, Contact, Birthdate, Nationality, EmmergencyName, EmergencyContact
 FROM Passengers;
 
+
+
 -- Table 7
 
 SELECT BookingID, FlightID, SeatNumber, PassengerID, BookingDate
 FROM Bookings;
 
+DELETE from Bookings;
+
 -- Table 8
 
-SELECT TicketID, BookingID, SeatNumber, PaymentCompleted
+SELECT TicketID, BookingID, PaymentCompleted
 FROM Ticket;

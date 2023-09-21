@@ -13,12 +13,12 @@ VALUES
 -- Table 2
 
 INSERT INTO AirPorts
-    (AirPortID, AirpotName, AirlineID)
+    (AirPortID, AirpotName, AirlineID, PortLocation)
 VALUES
     ('AP001', 'Adiss Ababa Airport', 'A001', 'Ethiopia, Adiss Ababa'),
     ('AP002', 'Adama Airport', 'A001', 'Ethiopia, Adama'),
     ('AP003', 'Jimma Airport', 'A001', 'Ethiopia, Jimma'),
-    ('AP004', 'Emirates Airport', 'A002', "Arab Emirates, Emirates"),
+    ('AP004', 'Emirates Airport', 'A002', 'Arab Emirates, Emirates'),
     ('AP005', 'BRITISH Airport', 'A003', 'Biritain, London'),
     ('AP006', 'AIR INDIA Airport', 'A004', 'India, New Delhi'),
     ('AP007', 'FINNAIR O/Y Airport', 'A005', 'China, Chicago');

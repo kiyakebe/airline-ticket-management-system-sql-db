@@ -112,7 +112,7 @@ CREATE TABLE Ticket
 (
     TicketID VARCHAR(10),
     BookingID VARCHAR(10),
-    TicketPrice FLOAT,
+    PaymentCompleted Int,
 
     PRIMARY Key(TicketID),
 

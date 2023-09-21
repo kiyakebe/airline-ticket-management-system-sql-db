@@ -21,7 +21,7 @@ FROM Flight;
 
 -- Table 5
 
-SELECT SeatNumber, FlightID
+SELECT SeatNumber, FlightID, IsReserved
 FROM Seats;
 
 -- Table 6
@@ -36,5 +36,5 @@ FROM Bookings;
 
 -- Table 8
 
-SELECT TicketID, BookingID, SeatNumber, TicketPrice
+SELECT TicketID, BookingID, SeatNumber, PaymentCompleted
 FROM Ticket;

@@ -110,6 +110,8 @@ END;
 EXECUTE TicketingTransaction
     @TicketID  = 'T0001',
     @BookingID  = 'B0001', -- the booking we have created in the above transaction
+    -- It is assumed the passenger finishes the payment throught digital payment 
+    -- the api will return PaymentCompleted code 1 when the payment is success
     @PaymentCompleted = 1; -- one mean completed the payment
 
 

@@ -48,9 +48,11 @@ INSERT INTO Flight
     (FlightID, AirlineID, PlaneId, DepartureAirport, ArrivalAirport, DepartueDate, DepartureTime, ArrivalTime, Price)
 VALUES
     ('F001', 'A001', 'P001', 'AP004', 'AP001', '2023-09-26', '09:30:00', '11:30:00', 250.0),
-    ('F002', 'A001', 'P005', 'AP001', 'AP001', '2023-09-26', '09:30:00', '11:30:00', 250.0), -- we have used this flight to demonstrate the transaction
+    ('F002', 'A001', 'P005', 'AP001', 'AP001', '2023-09-24', '09:30:00', '11:30:00', 250.0), -- we have used this flight to demonstrate the transaction
     ('F003', 'A001', 'P008', 'AP007', 'AP001', '2023-09-26', '09:30:00', '11:30:00', 250.0),
-    ('F004', 'A001', 'P003', 'AP001', 'AP005', '2023-09-26', '09:30:00', '11:30:00', 150.0);
+    ('F004', 'A001', 'P003', 'AP001', 'AP005', '2023-09-28', '09:30:00', '11:30:00', 150.0),
+    ('F005', 'A001', 'P008', 'AP007', 'AP001', '2023-09-21', '09:30:00', '11:30:00', 250.0),
+    ('F006', 'A001', 'P003', 'AP001', 'AP005', '2023-09-30', '09:30:00', '11:30:00', 150.0);
 
 -- Table 5
 

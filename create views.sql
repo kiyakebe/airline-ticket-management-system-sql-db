@@ -70,3 +70,5 @@ GO
 PRINT 'The totla earning of the airpory'
 
 SELECT Total from TotalAirlineEarning;
+
+
